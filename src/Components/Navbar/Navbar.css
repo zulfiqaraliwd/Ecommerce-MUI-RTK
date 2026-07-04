@@ -1,0 +1,22 @@
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(14, 166, 216);
+  color: white;
+  padding: 10px;
+}
+
+.pages{
+    display: flex;
+  justify-content: space-between;
+  color: white;
+  padding: 10px;
+  gap: 100px;  
+   list-style: none;
+   font-size: larger;
+   align-items: center;
+}
+.main-logo{
+    border-radius: 50px;
+}
