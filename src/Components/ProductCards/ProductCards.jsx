@@ -47,9 +47,9 @@ function ProductCards({ product }) {
       </CardContent>
 
       {/* Buttons */}
-      <CardActions>
-        <Button price={product.price} />
-      </CardActions>
+   <CardActions sx={{ display: "block" }}>
+  <Button product={product} />
+</CardActions>
     </Card>
   );
 }
