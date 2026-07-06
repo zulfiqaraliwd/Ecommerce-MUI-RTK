@@ -54,17 +54,21 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 function Navbar() {
   return (
-    <AppBar position="static">
+    <AppBar position="static"> 
 
       <Toolbar>
 
         {/* Logo */}
 
-        <img
-          src="/assets/images/dryF-logo.png"
-          alt="logo"
-          width="70"
-        />
+   <Box
+  component="img"
+  src="/assets/images/dryF-logo.png"
+  alt="logo"
+  sx={{
+    width: 70,
+    borderRadius: 10, // theme spacing
+  }}
+/>
 
         <Typography
           variant="h6"
@@ -73,7 +77,7 @@ function Navbar() {
             fontWeight: "bold",
           }}
         >
-          DRYF STORE
+         <h1>Dry Fruits</h1>
         </Typography>
 
         {/* Navigation */}
@@ -86,19 +90,19 @@ function Navbar() {
           }}
         >
           <NavLink style={navstyle} to="/">
-            Home
+          <h2>Home</h2>
           </NavLink>
 
           <NavLink style={navstyle} to="/about">
-            About
+           <h2>About</h2>
           </NavLink>
 
           <NavLink style={navstyle} to="/contact">
-            Contact
+             <h2>Contact</h2>
           </NavLink>
 
           <NavLink style={navstyle} to="/newproducts">
-            New Products
+             <h2>New Products</h2>
           </NavLink>
         </Box>
 

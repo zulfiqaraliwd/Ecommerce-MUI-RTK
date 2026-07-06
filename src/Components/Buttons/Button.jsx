@@ -1,53 +1,75 @@
-import React, { useEffect, useState } from 'react'
+import { useState } from "react";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
 
+export default function ColorButtons({ price }) {
+  const [increment, setIncrement] = useState(1);
 
-
-
-function Button({price}) {
-const [increment,setIncrement] = useState(1)
-
-let total = price*increment
-
-  const btn = {
-    background: "linear-gradient(135deg, #ff7a18, #ffb347)",
-    color: "white",
-    padding: "10px 18px",
-    border: "none",
-    borderRadius: "8px",
-    fontSize: "16px",
-    cursor: "pointer",
-    transition: "all 0.3s ease",
-    fontWeight: "600"
-  }
-
-  const plusBtn = {
-  background: "linear-gradient(135deg, #00c853, #64dd17)",
-  color: "white",
-  border: "none",
-  borderRadius: "50%",
-  width: "40px",
-  height: "40px",
-  fontSize: "22px",
-  fontWeight: "bold",
-  cursor: "pointer",
-  boxShadow: "0 4px 10px rgba(0,0,0,0.2)",
-  transition: "all 0.3s ease"
-}
+  const total = price * increment;
 
   return (
-    <div>
+    <Stack spacing={2}>
+      <Stack direction="row" spacing={2} justifyContent="center">
+        {/* Minus Button */}
+        <Button
+          variant="contained"
+          color="error"
+          onClick={() =>
+            setIncrement((prev) => (prev > 1 ? prev - 1 : 1))
+          }
+          sx={{
+            minWidth: 50,
+            width: 50,
+            height: 50,
+            borderRadius: "50%",
+            fontSize: "24px",
+            fontWeight: "bold",
+            p: 0,
+          }}
+        >
+          -
+        </Button>
 
-<button style={plusBtn} onClick={()=>setIncrement(increment > 1 ? increment -1 : 1 )}>-</button>
-<button style={btn}>Shop now</button>
-<button style={plusBtn} onClick={()=>setIncrement(increment+1)}>+</button>
+        {/* Order Button */}
+        <Button
+          variant="contained"
+          color="success"
+          sx={{
+            px: 4,
+            height: 50,
+            borderRadius: 2,
+          }}
+        >
+          Order Now
+        </Button>
 
-<p>Number of Product : {increment}</p>
-<p>Total price : {total}</p>
+        {/* Plus Button */}
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={() => setIncrement((prev) => prev + 1)}
+          sx={{
+            minWidth: 50,
+            width: 50,
+            height: 50,
+            borderRadius: "50%",
+            fontSize: "24px",
+            fontWeight: "bold",
+            p: 0,
+          }}
+        >
+          +
+        </Button>
+      </Stack>
 
+      <Typography align="center">
+        Number of Product: {increment}
+      </Typography>
 
-
-    </div>
-  )
+      <Typography align="center" fontWeight="bold">
+        Total Price: PKR {total}/-
+      </Typography>
+    </Stack>
+  );
 }
-
-export default Button

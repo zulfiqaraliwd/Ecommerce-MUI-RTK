@@ -1,61 +1,155 @@
-import React from 'react'
-import { FaWhatsapp, FaFacebook, FaInstagram } from 'react-icons/fa'
-import { NavLink } from 'react-router-dom'
-import "./footer.css"
 
-function Footer() {
+
+import React from "react";
+import {
+  Box,
+  Container,
+  Grid,
+  Stack,
+  Typography,
+  Link,
+  IconButton,
+} from "@mui/material";
+
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+
+import { Link as RouterLink } from "react-router-dom";
+
+export default function Footer() {
   return (
-    <div className='footer'>
-      <div className='footer-container'>
+    <Box
+      component="footer"
+      sx={{
+        bgcolor: "primary.main",
+        color: "white",
+        mt: 8,
+        py: 5,
+      }}
+    >
+      <Container maxWidth="lg">
+        <Grid container spacing={4}>
+          {/* Logo */}
+          <Grid size={{ xs: 12, md: 3 }}>
+            <Stack spacing={2}>
+              <Box
+                component="img"
+                src="/assets/images/dryF-logo.png"
+                alt="Logo"
+                sx={{
+                  width: 90,
+                  borderRadius: 12,
+                }}
+              />
 
-        {/* Logo + Info */}
-        <div className='footer-section'>
-          <img 
-            className='logo' 
-            src="/assets/images/dryF-logo.png" 
-            alt="logo" 
-            style={{ paddingTop: "20px", width: "90px" }}
-          />
-          <h1>UnitedMarkhor Dry Fruit</h1>
-          <p>Quality Products Across Pakistan</p>
-        </div>
+              <Typography variant="h6" fontWeight="bold">
+                UnitedMarkhor Dry Fruit
+              </Typography>
 
-        {/* Links */}
-        <div className='product-section'>
-          <h3>Links</h3>
-          <ul>
-            <li><NavLink to="/">Home</NavLink></li>
-            <li><NavLink to="/about">About</NavLink></li>
-            <li><NavLink to="/contact">Contact</NavLink></li>
-            <li><NavLink to="/orders">Orders</NavLink></li>
-          </ul>
-        </div>
+              <Typography variant="body2">
+                Quality Products Across Pakistan
+              </Typography>
+            </Stack>
+          </Grid>
 
-        {/* Contact */}
-        <div className='footer-section'>
-          <h3>Contact</h3>
-          <p>03465147766</p>
-          <p>unitedmarkhorgroup786@gmail.com</p>
-        </div>
+          {/* Links */}
+          <Grid size={{ xs: 12, md: 3 }}>
+            <Typography variant="h6" gutterBottom>
+              Quick Links
+            </Typography>
 
-        {/* Social */}
-        <div className='footer-section'>
-          <h3>Visit and Follow Us</h3>
-          <div className='icons'>
-            <FaFacebook />
-            <FaInstagram />
-            <FaWhatsapp />
-          </div>
-        </div>
+            <Stack spacing={1}>
+              <Link
+                component={RouterLink}
+                to="/"
+                color="inherit"
+                underline="hover"
+              >
+                Home
+              </Link>
 
-      </div>
+              <Link
+                component={RouterLink}
+                to="/about"
+                color="inherit"
+                underline="hover"
+              >
+                About
+              </Link>
 
-      {/* Bottom */}
-      <div className='footer-bottom'>
-        <p className='content'>© 2026 UnitedMarkhorGroup786</p>
-      </div>
-    </div>
-  )
+              <Link
+                component={RouterLink}
+                to="/contact"
+                color="inherit"
+                underline="hover"
+              >
+                Contact
+              </Link>
+
+              <Link
+                component={RouterLink}
+                to="/newproducts"
+                color="inherit"
+                underline="hover"
+              >
+                New Products
+              </Link>
+            </Stack>
+          </Grid>
+
+          {/* Contact */}
+          <Grid size={{ xs: 12, md: 3 }}>
+            <Typography variant="h6" gutterBottom>
+              Contact
+            </Typography>
+
+            <Stack spacing={1}>
+              <Typography>03465147766</Typography>
+
+              <Typography>
+                unitedmarkhorgroup786@gmail.com
+              </Typography>
+            </Stack>
+          </Grid>
+
+          {/* Social */}
+          <Grid size={{ xs: 12, md: 3 }}>
+            <Typography variant="h6" gutterBottom>
+              Follow Us
+            </Typography>
+
+            <Stack direction="row" spacing={1}>
+              <IconButton color="inherit" href="https://www.facebook.com/qdrty.slajyt.mrkz">
+                <FacebookIcon />
+              </IconButton>
+
+              <IconButton color="inherit" href="https://www.instagram.com/unitedmarkhor/">
+                <InstagramIcon />
+              </IconButton>
+
+             <IconButton color="inherit" href="https://wa.me/923465147766">
+  <WhatsAppIcon />
+</IconButton>
+            </Stack>
+          </Grid>
+        </Grid>
+
+        <Box
+          sx={{
+            mt: 5,
+            pt: 3,
+            borderTop: 1,
+            borderColor: "rgba(255,255,255,.2)",
+            textAlign: "center",
+          }}
+        >
+          <Typography variant="body2">
+            © 2026 UnitedMarkhorGroup786. All Rights Reserved.
+          </Typography>
+        </Box>
+      </Container>
+    </Box>
+  );
 }
 
-export default Footer
