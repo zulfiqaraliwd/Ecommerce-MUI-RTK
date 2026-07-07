@@ -1,8 +1,19 @@
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import Stack from "@mui/material/Stack";
+import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Paper from "@mui/material/Paper";
+import Button from "@mui/material/Button";
+
+import Dialog from "@mui/material/Dialog";
+import DialogTitle from "@mui/material/DialogTitle";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogActions from "@mui/material/DialogActions";
+
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import DeleteIcon from "@mui/icons-material/Delete";
@@ -17,7 +28,17 @@ function CartPage() {
   const cartItems = useSelector((state) => state.cart.cartItems);
   const dispatch = useDispatch();
 
-//   Total Quantity
+  const [open, setOpen] = useState(false);
+
+  const handleOrder = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  //   Total Quantity
   const totalQuantity = cartItems.reduce(
     (sum, item) => sum + item.quantity,
     0
@@ -43,7 +64,7 @@ function CartPage() {
   }
 
   return (
-    <Stack spacing={2} sx={{ p: 3 }}>
+    <Stack spacing={2} sx={{ p: 3, width: "100%" }}>
       {/* Cart Products */}
       {cartItems.map((item) => (
         <Paper
@@ -52,6 +73,7 @@ function CartPage() {
           sx={{
             p: 2,
             borderRadius: 2,
+            width: "100%",
           }}
         >
           <Stack
@@ -84,9 +106,7 @@ function CartPage() {
                 <RemoveIcon />
               </IconButton>
 
-              <Typography fontWeight="bold">
-                {item.quantity}
-              </Typography>
+              <Typography fontWeight="bold">{item.quantity}</Typography>
 
               <IconButton
                 size="small"
@@ -119,38 +139,90 @@ function CartPage() {
         </Paper>
       ))}
 
-      {/* Summary Card */}
-      <Paper
-        elevation={4}
+      {/* Summary + Button wrapper — is Box se hi centering guaranteed hogi */}
+      <Box
         sx={{
-          width: 350,
-          ml: "auto",
-          mt: 4,
-          p: 3,
-          borderRadius: 3,
+          width: "100%",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: 2,
+          mt: 2,
         }}
       >
-        <Typography variant="h5" gutterBottom>
-          Cart Summary
-        </Typography>
-
-        <Typography variant="body1" sx={{ mb: 1 }}>
-          Total Products: <strong>{cartItems.length}</strong>
-        </Typography>
-
-        <Typography variant="body1" sx={{ mb: 1 }}>
-          Total Quantity: <strong>{totalQuantity}</strong>
-        </Typography>
-
-        <Typography
-          variant="h5"
-          color="success.main"
-          fontWeight="bold"
-          sx={{ mt: 2 }}
+        {/* Summary Card */}
+        <Paper
+          elevation={4}
+          sx={{
+            width: 350,
+            maxWidth: "100%",
+            p: 3,
+            borderRadius: 3,
+          }}
         >
-          Grand Total: PKR {totalPrice.toLocaleString()}/-
-        </Typography>
-      </Paper>
+          <Typography variant="h5" gutterBottom>
+            Cart Summary
+          </Typography>
+
+          <Typography variant="body1" sx={{ mb: 1 }}>
+            Total Products: <strong>{cartItems.length}</strong>
+          </Typography>
+
+          <Typography variant="body1" sx={{ mb: 1 }}>
+            Total Quantity: <strong>{totalQuantity}</strong>
+          </Typography>
+
+          <Typography
+            variant="h5"
+            color="success.main"
+            fontWeight="bold"
+            sx={{ mt: 2 }}
+          >
+            Grand Total: PKR {totalPrice.toLocaleString()}/-
+          </Typography>
+        </Paper>
+
+        {/* Order Button */}
+        <Button
+          variant="contained"
+          color="success"
+          sx={{
+            width: 350,
+            maxWidth: "100%",
+            height: 45,
+          }}
+          onClick={() => setOpen(true)}
+        >
+          Order Now
+        </Button>
+      </Box>
+
+      <Dialog open={open} onClose={() => setOpen(false)}>
+        <DialogTitle>🛒 Confirm Order</DialogTitle>
+
+        <DialogContent>
+          <DialogContentText>
+            Are you sure you want to place this order?
+          </DialogContentText>
+        </DialogContent>
+
+        <DialogActions>
+          <Button color="error" onClick={() => setOpen(false)}>
+            Cancel
+          </Button>
+
+          <Button
+            variant="contained"
+            color="success"
+            onClick={() => {
+              alert("✅ Your order has been placed successfully!");
+              setOpen(false);
+            }}
+          >
+            Confirm
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Stack>
   );
 }

@@ -8,9 +8,10 @@ import { addToCart } from "../../feature/cart/cartSlice";
 export default function ColorButtons({ product }) {
   const dispatch = useDispatch();
 
-  const handleAddToCart = () => {
-    dispatch(addToCart({ ...product, quantity: 1 }));
-  };
+const handleAddToCart = () => {
+  dispatch(addToCart({ ...product, quantity: 1 }));
+  alert("✅ Product has been added to cart!");
+};
 
   return (
     <Stack spacing={1.5} alignItems="center">
