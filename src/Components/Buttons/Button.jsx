@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 
 
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../redux/feature/cart/cartSlice";
+import { addToCart } from "../../feature/cart/cartSlice";
 
 
 export default function ColorButtons({ product }) {
