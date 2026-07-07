@@ -57,7 +57,11 @@ function Navbar() {
   const totalQty = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <AppBar position="static">
+    <AppBar
+  position="static"
+  sx={{
+    bgcolor: "#1B3A2F", 
+  }}>
       <Toolbar>
         {/* Logo */}
         <Box
@@ -80,30 +84,39 @@ function Navbar() {
           Dry Fruits
         </Typography>
 
+      
         {/* Navigation */}
-        <Box
-          sx={{
-            display: "flex",
-            gap: 3,
-            ml: 5,
-          }}
-        >
-          <NavLink style={navstyle} to="/">
-            <h2>Home</h2>
-          </NavLink>
+<Box
+  sx={{
+    display: "flex",
+    gap: 3,
+    ml: 20,
+  }}
+>
+  <NavLink style={navstyle} to="/">
+    <Typography variant="subtitle1" fontWeight={500}>
+      Home
+    </Typography>
+  </NavLink>
 
-          <NavLink style={navstyle} to="/about">
-            <h2>About</h2>
-          </NavLink>
+  <NavLink style={navstyle} to="/about">
+    <Typography variant="subtitle1" fontWeight={500}>
+      About
+    </Typography>
+  </NavLink>
 
-          <NavLink style={navstyle} to="/contact">
-            <h2>Contact</h2>
-          </NavLink>
+  <NavLink style={navstyle} to="/contact">
+    <Typography variant="subtitle1" fontWeight={500}>
+      Contact
+    </Typography>
+  </NavLink>
 
-          <NavLink style={navstyle} to="/newproducts">
-            <h2>New Products</h2>
-          </NavLink>
-        </Box>
+  <NavLink style={navstyle} to="/newproducts">
+    <Typography variant="subtitle1" fontWeight={500}>
+      New Products
+    </Typography>
+  </NavLink>
+</Box>
 
         {/* Push Right */}
         <Box sx={{ flexGrow: 1 }} />

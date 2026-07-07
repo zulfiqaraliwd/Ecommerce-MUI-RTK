@@ -50,7 +50,7 @@ function ProductCards({ product }) {
    <CardActions sx={{ display: "block" }}>
   <Button product={product} />
 </CardActions>
-
+<h3> Note: You can increase Quantity from 🛒</h3>
     </Card>
 
     

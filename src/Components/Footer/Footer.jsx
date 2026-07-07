@@ -19,15 +19,15 @@ import { Link as RouterLink } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <Box
-      component="footer"
-      sx={{
-        bgcolor: "primary.main",
-        color: "white",
-        mt: 8,
-        py: 5,
-      }}
-    >
+ <Box
+  component="footer"
+  sx={{
+    bgcolor: "#1B3A2F",   // yahan primary.main se success.main kar diya
+    color: "white",
+    mt: 8,
+    py: 5,
+  }}
+>
       <Container maxWidth="lg">
         <Grid container spacing={4}>
           {/* Logo */}
