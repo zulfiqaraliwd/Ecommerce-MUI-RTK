@@ -12,11 +12,11 @@ function App() {
       <Navbar />
       <AppRoutes />
       
-
-  
    <Whatsapp  />
   
   <Footer />
+
+  
     </>
   );
 }

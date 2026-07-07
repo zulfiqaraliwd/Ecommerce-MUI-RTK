@@ -2,16 +2,19 @@ import Stack from "@mui/material/Stack";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
-
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../feature/cart/cartSlice";
-
 
 export default function ColorButtons({ product }) {
   const dispatch = useDispatch();
 
+  const handleAddToCart = () => {
+    dispatch(addToCart({ ...product, quantity: 1 }));
+  };
+
   return (
-    <Stack spacing={2}>
+    <Stack spacing={1.5} alignItems="center">
+      {/* Add to Cart Button */}
       <Button
         fullWidth
         variant="contained"
@@ -21,13 +24,14 @@ export default function ColorButtons({ product }) {
           borderRadius: 2,
           fontWeight: "bold",
         }}
-        onClick={() => dispatch(addToCart(product))}
+        onClick={handleAddToCart}
       >
         Add To Cart
       </Button>
 
-      <Typography align="center">
-        Price : PKR {product.price}/-
+      {/* Price */}
+      <Typography align="center" fontWeight="bold" color="success.main">
+        Price : PKR {product.price.toLocaleString()}/-
       </Typography>
     </Stack>
   );
