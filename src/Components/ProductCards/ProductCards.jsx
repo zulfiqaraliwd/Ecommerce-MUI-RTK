@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
@@ -8,10 +10,14 @@ import Box from "@mui/material/Box";
 import Button from "../Buttons/Button";
 
 function ProductCards({ product }) {
+  const navigate = useNavigate();
+
   return (
     <Card
+      onClick={() => navigate(`/product/${product.id}`)}
       sx={{
         width: 300,
+        cursor: "pointer",
         borderRadius: 3,
         boxShadow: 2,
         overflow: "hidden",
@@ -67,8 +73,11 @@ function ProductCards({ product }) {
         </Typography>
       </CardContent>
 
-      {/* Buttons */}
-      <CardActions sx={{ display: "block", px: 2, pb: 2 }}>
+      {/* Add To Cart Button */}
+      <CardActions
+        sx={{ display: "block", px: 2, pb: 2 }}
+        onClick={(e) => e.stopPropagation()}
+      >
         <Button product={product} />
       </CardActions>
 
@@ -79,7 +88,7 @@ function ProductCards({ product }) {
         color="text.secondary"
         sx={{ pb: 1.5 }}
       >
-         You can increase quantity from cart 🛒
+        You can increase quantity from cart 🛒
       </Typography>
     </Card>
   );

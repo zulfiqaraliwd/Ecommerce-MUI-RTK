@@ -19,7 +19,7 @@ function AppRoutes() {
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/newproducts" element={<NewProducts />} />
-      <Route path="/newproducts/:id" element={<ProductDetails />} />
+      <Route path="/product/:id" element={<ProductDetails />} />
       <Route path="/cart" element={<CartPage />} />
     </Routes>
   
